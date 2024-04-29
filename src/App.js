@@ -1,23 +1,23 @@
 import "./App.css";
-import { useBoard, useStatusMessage } from "./Hooks/useBoard";
+import { useBoard } from "./Hooks/useBoard";
 import { useState } from "react";
 
 function App() {
-  const { board, updateBoard, isXTurns, msg, isDisabled, winIndex, isDraw, resetGame } = useBoard();
+  const { boardSize, board, updateBoard, isXTurns, msg, isDisabled, winIndex, isDraw, resetGame } = useBoard();
 
   const [hoverIndex, setHoverIndex] = useState(null);
 
   return (
     <div className="tick-tock-toe">
 
-      <p className="heading">Tick-Tack-Toe
+      <p className="heading">Tick - Tack - Toe
         <br />
-        ( YOUR NORMAL GAME !!! )
+        ( NOT SO NORMAL GAME !!! )
       </p>
       <br />
       <div className="status">{msg}</div>
 
-      <div className="board--container">
+      <div className="board--container" style={{gridTemplateColumns: `repeat(${boardSize}, 1fr)`}}>
         {board.map((value, index) => {
           return (
             <div
